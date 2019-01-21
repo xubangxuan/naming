@@ -1,17 +1,15 @@
 <template>
   <div id="app">
-    <hearderDom></hearderDom>
+    <commontop></commontop>
     <router-view/>
   </div>
 </template>
 
 <script>
-import url from '@/serverApi.js'
-import { Message } from 'element-ui'
-import hearderDom from '@/components/compont/commonTop.vue'
+import commontop from '@/components/compont/commonTop.vue'
 export default {
     components:{
-        hearderDom,
+        commontop
     },
     name: 'App',
 }
@@ -199,6 +197,13 @@ h4{
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
 }
+.projece4{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+}
 .serverwindows img{
     max-width: 100%;
     height: auto;
@@ -216,7 +221,6 @@ h4{
     display: none;
 }
 .contents{
-  height: 100%;
   display: flex;
   display: -webkit-flex;
   flex-direction: row;
@@ -249,7 +253,6 @@ h4{
   -webkit-align-items:center;
 }
 .contentsL{
-  height: 100%;
   display: flex;
   display: -webkit-flex;
   flex-direction: row;
@@ -260,7 +263,6 @@ h4{
   -webkit-align-items:center;
 }
 .contentsNav{
-    height: 100%;
     display: flex;
     display: -webkit-flex;
     flex-direction: row;
@@ -298,6 +300,14 @@ h4{
     -webkit-align-items:center;
     -webkit-justify-content: space-between;
 }
+.contentssLR_no{
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    justify-content: space-between;
+    -webkit-flex-direction: row;
+    -webkit-justify-content: space-between;
+}
 .contentsBut{
     display: flex;
     display: -webkit-flex;
@@ -309,7 +319,6 @@ h4{
     -webkit-align-items:center;
 }
 .contentss{
-  height: 100%;
   display: flex;
   display: -webkit-flex;
   flex-direction: column;
@@ -320,7 +329,6 @@ h4{
   -webkit-align-items:center;
 }
 .contentssL{
-  height: 100%;
   display: flex;
   display: -webkit-flex;
   flex-direction: column;
@@ -347,7 +355,19 @@ h4{
     height: 10px;
     background-color: #F5F5F5;
 }
-.el-input__inner{
+.index_radio .el-radio__input.is-checked+.el-radio__label{
+    color: #030303 !important;
+}
+.index_radio .el-radio__input.is-checked .el-radio__inner{
+    border-color:#3399FF !important;
+    background-color: #3399ff  !important;
+}
+.oneInput .el-input__inner{
+    border: none;
+    padding-left: 0 !important;
+    padding-right: 20px !important;
+}
+/* .el-input__inner{
     border: none;
     padding-left: 0 !important;
     padding-right: 20px !important;
@@ -473,5 +493,5 @@ h4{
 }
 .el-loading-spinner .el-loading-text{
     color: #ffffff;
-}
+} */
 </style>
