@@ -6,6 +6,8 @@ import SearchDetail from '@/components/page/searchDetail'
 import AboutMessage from '@/components/page/aboutMessage'
 import AboutMessageDetail from '@/components/page/aboutMessageDetail'
 import ServerTips from '@/components/page/serverTips'
+import ActList from '@/components/page/actList'
+import ActDetail from '@/components/page/actDetail'
 
 Vue.use(Router)
 
@@ -35,6 +37,14 @@ export default new Router({
       path: '/serverTips',
       name: 'ServerTips',
       component: ServerTips
+    },{
+      path: '/actList',
+      name: 'ActList',
+      component: ActList
+    },{
+      path:'/actDetail',
+      name: 'ActDetail',
+      component: ActDetail
     }
   ]
 })

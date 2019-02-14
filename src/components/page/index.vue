@@ -15,7 +15,7 @@
                                         style="flex:1;margin-right:4%"
                                         placeholder="请输入关键字检索"
                                         v-model="searchValue">
-                                        <i slot="suffix" class="el-input__icon el-icon-search"></i>
+                                        <i @click="goSearchList(searchValue,radio)" slot="suffix" class="el-input__icon el-icon-search" style="cursor:pointer"></i>
                                     </el-input>
                                 </div>
                                 <div class="contents index_radio" style="margin-top:15px">
@@ -203,12 +203,12 @@
             </div>
             <div class="fixedOutlink">
                 <div class="contents" v-for="(i,index) in linkList" :key="index">
-                    <img :src="i.src" alt="">
+                    <img width="35px" height="35px" :src="i.src" alt="">
                 </div>
             </div>
             <div v-show="fullPage==4" class="footer">
                 <div class="contents">
-                    <div class="contentsNews footleft">
+                    <div class="contentsNews footleft" style="padding:10px 0">
                         <p>电话：0817-2154521</p>
                         <p>邮箱：</p>
                         <p>馆址：地址123131313</p>
@@ -222,15 +222,15 @@
                     <div class="contentsNav footleft" style="padding: 10px 10%">
                         <div class="contentss">
                             <img width="45px" height="45px" :src="activeimg" alt="">
-                            <span style="margin-top:3px">关注公众号</span>
+                            <span style="margin-top:10px">关注公众号</span>
                         </div>
                         <div class="contentss">
                             <img width="45px" height="45px" :src="activeimg" alt="">
-                            <span style="margin-top:3px">关注微博</span>
+                            <span style="margin-top:10px">关注微博</span>
                         </div>
                         <div class="contentss">
                             <img width="45px" height="45px" :src="activeimg" alt="">
-                            <span style="margin-top:3px">关注抖音</span>
+                            <span style="margin-top:10px">关注抖音</span>
                         </div>
                     </div>
                 </div>
@@ -304,7 +304,7 @@ export default {
            
         },
         mounted(){
-            //
+            //只能是在index页面监听滚动
             //在元素加载完毕的时候添加鼠标滑动事件
             //
             if(document.addEventListener){
@@ -312,8 +312,12 @@ export default {
             }
             window.onmousewheel=document.onmousewheel=this.scroll;
             window.onresize=this.resize;
+            
         },
-
+        destroyed(){
+            document.removeEventListener('DOMMouseScroll', this.scroll);//移除页面滚动事件
+            window.onmousewheel=document.onmousewheel=null;
+        },
         methods:{
             resize(){
                 this.offsetheight = document.documentElement.clientHeight;
@@ -387,6 +391,16 @@ export default {
                     }
                     this.$refs.carousel[0].setActiveItem(index);
                 }
+            },
+            // 图书搜索
+            goSearchList(txt,type){
+                this.$router.push({
+                    path:'/searchList',
+                    query:{
+                        txt:txt,
+                        type:type
+                    }
+                })
             }
         },
         filters:{
@@ -802,13 +816,13 @@ export default {
     position: fixed;
     width: 100%;
     bottom: 0;
-    background-color: #000000;
+    background-color: #434343;
     color: #ffffff;
 }
 .footer>div{
     width: 70vw;
     margin: 0 auto;
-    height: 80px;
+    height: 100px;
 }
 .footer>div>div{
     width: 50%;

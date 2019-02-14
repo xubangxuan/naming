@@ -328,6 +328,26 @@ h4{
   -webkit-justify-content: center;
   -webkit-align-items:center;
 }
+.contentssTB{
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* align-items:center; */
+  -webkit-flex-direction: column;
+  -webkit-justify-content: space-between;
+  /* -webkit-align-items:center; */
+}
+.contentssTCB{
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column;
+  justify-content: space-around;
+  /* align-items:center; */
+  -webkit-flex-direction: column;
+  -webkit-justify-content: space-around;
+  /* -webkit-align-items:center; */
+}
 .contentssL{
   display: flex;
   display: -webkit-flex;
@@ -355,6 +375,11 @@ h4{
     height: 10px;
     background-color: #F5F5F5;
 }
+.bghui{
+    width: 100%;
+    height:20px;
+    background:rgba(245,245,245,1);
+}
 .index_radio .el-radio__input.is-checked+.el-radio__label{
     color: #030303 !important;
 }
@@ -366,6 +391,25 @@ h4{
     border: none;
     padding-left: 0 !important;
     padding-right: 20px !important;
+}
+.el-dialog{
+    border-radius: 8px;
+}
+.el-dialog__header{
+    padding: 12px 35px;
+    background-color: #00A0E9;
+}
+.el-dialog__headerbtn{
+    top: 16px
+}
+.el-dialog__headerbtn .el-dialog__close{
+    color: #ffffff;
+}
+.el-dialog__title{
+    font-size:16px;
+    font-family:MicrosoftYaHei;
+    font-weight:400;
+    color:#ffffff !important;
 }
 /* .el-input__inner{
     border: none;

@@ -2,7 +2,7 @@
     <div v-title data-title="检索结果" v-cloak style="background-color:#f5f5f5">
         <div class="all">
             <div class="top">
-                <img width="100%" height="150px" :src="topimg" alt="">
+                <img width="100%" height="100%" :src="topimg" alt="">
             </div>
             <div class="mains">
                 <p>相关书籍检索结果：300</p>
@@ -35,7 +35,7 @@
             </div>
 
         </div>
-        <!-- <commonFooter></commonFooter> -->
+        <commonFooter></commonFooter>
     </div>
 </template>
 
@@ -68,9 +68,14 @@
     margin-top: 80px;
     min-height: calc(100vh - 80px);
 }
+.top{
+    width: 100%;
+    height: 13.7vw;
+}
 .mains{
     width: 70vw;
     margin: 0 auto;
+    margin-bottom: 100px;
 }
 .mains>p{
     font-size:16px;
@@ -83,6 +88,7 @@
 .lists{
     background-color: #fff;
     padding: 30px;
+    margin-bottom: 50px;
 }
 .one_list{
     padding: 30px 0;

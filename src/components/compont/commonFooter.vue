@@ -2,7 +2,7 @@
     <div>
         <div class="footer">
             <div class="contents">
-                <div class="contentsNews footleft">
+                <div class="contentsNews footleft" style="padding:10px 0">
                     <p>电话：0817-2154521</p>
                     <p>邮箱：</p>
                     <p>馆址：地址123131313</p>
@@ -16,15 +16,15 @@
                 <div class="contentsNav footleft" style="padding: 10px 10%">
                     <div class="contentss">
                         <img width="45px" height="45px" :src="activeimg" alt="">
-                        <span style="margin-top:3px">关注公众号</span>
+                        <span style="margin-top:10px">关注公众号</span>
                     </div>
                     <div class="contentss">
                         <img width="45px" height="45px" :src="activeimg" alt="">
-                        <span style="margin-top:3px">关注微博</span>
+                        <span style="margin-top:10px">关注微博</span>
                     </div>
                     <div class="contentss">
                         <img width="45px" height="45px" :src="activeimg" alt="">
-                        <span style="margin-top:3px">关注抖音</span>
+                        <span style="margin-top:10px">关注抖音</span>
                     </div>
                 </div>
             </div>
@@ -47,17 +47,17 @@
     position: fixed;
     width: 100%;
     bottom: 0;
-    background-color: #000000;
+    background-color: #434343;
     color: #ffffff;
 }
 .footer>div{
     width: 70vw;
     margin: 0 auto;
-    height: 80px;
+    height: 100px;
 }
 .footer>div>div{
     width: 50%;
-    padding: 10px 5%;
+    padding: 5px 5%;
 }
 .footleft{
     font-size:14px;
@@ -65,6 +65,5 @@
     font-weight:400;
     color:rgba(255,255,255,1);
     line-height:14px;
-    padding: 8px 0;
 }
 </style>

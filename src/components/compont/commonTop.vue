@@ -5,9 +5,49 @@
                 <img height="100%" :src="indexlogo" alt="">
             </div>
             <ul class="contentsNav">
-                <li @click="links(index,item.path)" v-for="(item,index) in lists" :key="index" :class="onindex==index?'onstatus':''">
+                <li @click="links('/')"  :class="onStutas=='Index'||onStutas=='SearchList'||onStutas=='SearchDetail'?'onstatus':''">
                     <div class="contents">
-                        {{item.text}}
+                        首页
+                    </div>
+                </li>
+                <li @click="links('/aboutMessage')"  :class="onStutas=='AboutMessage'||onStutas=='AboutMessageDetail'?'onstatus':''">
+                    <div class="contents">
+                        本馆资讯
+                    </div>
+                </li>
+                <li @click="links('/serverTips')"  :class="onStutas=='ServerTips'?'onstatus':''">
+                    <div class="contents">
+                        服务指南
+                    </div>
+                </li>
+                <li @click="links('/actList')"  :class="onStutas=='ActList'||onStutas=='ActDetail'?'onstatus':''">
+                    <div class="contents">
+                        活动报名
+                    </div>
+                </li>
+                <li @click="links('')"  :class="onStutas==''?'onstatus':''">
+                    <div class="contents">
+                        新书推荐
+                    </div>
+                </li>
+                <li @click="links('')"  :class="onStutas==''?'onstatus':''">
+                    <div class="contents">
+                        关于南图
+                    </div>
+                </li>
+                <li @click="links('')"  :class="onStutas==''?'onstatus':''">
+                    <div class="contents">
+                        数字资源
+                    </div>
+                </li>
+                <li @click="links('')"  :class="onStutas==''?'onstatus':''">
+                    <div class="contents">
+                        文化地图
+                    </div>
+                </li>
+                <li @click="links('')" :class="onStutas==''?'onstatus':''">
+                    <div class="contents">
+                        服务数据
                     </div>
                 </li>
             </ul>
@@ -22,43 +62,51 @@
     export default {
         data() {
             return {
-                onindex:0,
-                onStutas:'',
+                onStutas:'Index',
                 lists:[
                     {
                         text:'首页',
-                        path:'/'
+                        path:'/',
+                        name:'Index'
                     },{
                         text:'本馆资讯',
-                        path:'/aboutMessage'
+                        path:'/aboutMessage',
+                        name:'AboutMessage'
                     },{
                         text:'服务指南',
-                        path:'/serverTips'
+                        path:'/serverTips',
+                        name:'ServerTips'
                     },{
                         text:'活动报名',
-                        path:'/'
+                        path:'/',
+                        name:'ServerTips'
                     },{
                         text:'新书推荐',
-                        path:'/'
+                        path:'/',
+                        name:'ServerTips'
                     },{
                         text:'关于南图',
-                        path:'/'
+                        path:'/',
+                        name:'ServerTips'
                     },{
                         text:'数字资源',
-                        path:'/'
+                        path:'/',
+                        name:'ServerTips'
                     },{
                         text:'文化地图',
-                        path:'/'
+                        path:'/',
+                        name:'ServerTips'
                     },{
                         text:'服务数据',
-                        path:'/'
+                        path:'/',
+                        name:'ServerTips'
                     }
                 ],
                 indexlogo:require('../../assets/images/indexlogo.png'),
             }
         },
-        created(){
-
+        mounted(){
+            this.onStutas = this.$route.name;
         },
         watch:{
             $route(to,from){
@@ -66,8 +114,7 @@
             }
         },
         methods:{
-            links(index,path){
-                this.onindex = index;
+            links(path){
                 this.$router.push({
                     path:path,
                 })
