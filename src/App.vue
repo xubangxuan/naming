@@ -411,6 +411,10 @@ h4{
     font-weight:400;
     color:#ffffff !important;
 }
+.el-icon-circle-plus-outline:before{
+    font-size: 28px;
+    color: #999999;
+}
 /* .el-input__inner{
     border: none;
     padding-left: 0 !important;

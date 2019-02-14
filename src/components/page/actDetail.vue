@@ -33,7 +33,7 @@
                             <span></span>
                         </p>
                     </div>
-                    <div style="margin-top:60px" class="contents">
+                    <div v-show="'判断报名'" style="margin-top:60px" class="contents">
                         <el-button @click="showReport=true" type="primary" round>我要报名</el-button>
                     </div>
                 </div>
@@ -59,15 +59,45 @@
                     </div>
                     <div class="contentsL oneinput" style="width:80%">
                         <label for="">电　话</label>
-                        <input style="flex:1" type="number" v-model="phone" placeholder="请输入联系电话">
+                        <input style="flex:1" type="text" v-model="phone" placeholder="请输入联系电话">
                     </div>
                 </div>
                 <!-- 单图片上传区域 -->
-                <div>
-
+                <div class="contents allPhotos">
+                    <div style="width:80%">
+                        <div v-show="headImg==''" class="contentssL">
+                            <div class="showPic contentss">
+                                <i class="el-icon-circle-plus-outline"></i>
+                            </div>
+                            <div style="margin-top:10px;position:relative">
+                                <el-button style="width:100px;height:24px;line-height:24px;padding:0;border-radius:12px;position:absolute;top:0;z-index:0;" type="primary">上传头像</el-button>
+                                <form style="width:100px;height:24px;">
+                                    <input  ref="filee"  @change="uploadImg"   type="file" accept="image/*" style="padding:2px;opacity: 0;width:100%;height:100%">
+                                </form>
+                            </div>
+                        </div>
+                        <div v-show="headImg!=''" class="contentssL">
+                            <div class="showPic contentss">
+                                <img style="width:100%;height:100%" id="filesimg" src="" alt="">
+                            </div>
+                            <div style="margin-top:10px">
+                                <el-button @click="headImg=''" style="width:100px;height:24px;line-height:24px;padding:0;border-radius:12px;background-color:#f5f5f5;color:#999999">删除图片</el-button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="contentss">
-                    <el-button style="width:80%" type="primary" round>立即报名</el-button>
+                    <el-button @click="startReport" style="width:80%" type="primary" round>立即报名</el-button>
+                </div>
+            </el-dialog>
+            <el-dialog
+                title="报名资料单"
+                :visible.sync="reportSuccess"
+                width="30%"
+                >
+                <div class="contentss">
+                    <img style="width:180px;height:160px" src="" alt="">
+                    <p class="success">恭喜，报名成功！</p>
                 </div>
             </el-dialog>
         </div>
@@ -84,14 +114,28 @@
             return {
                 topimg:require('../../assets/images/banner.png'),
                 showReport:false,
+                reportSuccess:false,
                 name:'',
                 readcard:'',
                 idcard:'',
                 phone:'',
+                headImg:'',
             }
         },
         methods:{
-            
+            uploadImg(){
+                this.headImg = this.$refs.filee.files[0];
+                var imgurl = this.$refs.filee.files[0];
+                var reader = new FileReader();
+                reader.onloadend = function(e){
+                    document.getElementById('filesimg').src = e.target.result;
+                }
+                reader.readAsDataURL(imgurl);
+            },
+            startReport(){
+                this.showReport = false;
+                this.reportSuccess = true;
+            }
         }
     }
 </script>
@@ -176,5 +220,20 @@
 }
 .writeInfo>div{
     margin-bottom: 30px;
+}
+.showPic{
+    width: 100px;
+    height: 75px;
+    background-color: #f5f5f5;
+}
+.allPhotos{
+    margin-bottom: 60px;
+}
+.success{
+    font-size:20px;
+    font-family:MicrosoftYaHei;
+    font-weight:400;
+    color:rgba(3,3,3,1);
+    line-height:28px;
 }
 </style>

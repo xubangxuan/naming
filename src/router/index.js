@@ -8,6 +8,13 @@ import AboutMessageDetail from '@/components/page/aboutMessageDetail'
 import ServerTips from '@/components/page/serverTips'
 import ActList from '@/components/page/actList'
 import ActDetail from '@/components/page/actDetail'
+import NewBookList from '@/components/page/newBookList'
+import NewBookDetail from '@/components/page/newBookDetail'
+import AboutUs from '@/components/page/aboutUs'
+import Numberziyuan from '@/components/page/numberziyuan'
+import ServerData from '@/components/page/serverData'
+import Login from '@/components/page/login'
+
 
 Vue.use(Router)
 
@@ -45,6 +52,30 @@ export default new Router({
       path:'/actDetail',
       name: 'ActDetail',
       component: ActDetail
+    },{
+      path:'/newBookList',
+      name: 'NewBookList',
+      component: NewBookList
+    },{
+      path:'/newBookDetail',
+      name: 'NewBookDetail',
+      component: NewBookDetail
+    },{
+      path:'/aboutUs',
+      name: 'AboutUs',
+      component: AboutUs
+    },{
+      path:'/numberziyuan',
+      name: 'Numberziyuan',
+      component: Numberziyuan
+    },{
+      path:'/serverData',
+      name: 'ServerData',
+      component: ServerData
+    },{
+      path:'/login',
+      name: 'Login',
+      component: Login
     }
   ]
 })

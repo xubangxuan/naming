@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="indexTop contentsL">
+        <div v-show="showTop" class="indexTop contentsL">
             <div class="contents">
                 <img height="100%" :src="indexlogo" alt="">
             </div>
@@ -25,17 +25,17 @@
                         活动报名
                     </div>
                 </li>
-                <li @click="links('')"  :class="onStutas==''?'onstatus':''">
+                <li @click="links('/newBookList')"  :class="onStutas=='NewBookList'||onStutas=='NewBookDetail'?'onstatus':''">
                     <div class="contents">
                         新书推荐
                     </div>
                 </li>
-                <li @click="links('')"  :class="onStutas==''?'onstatus':''">
+                <li @click="links('/aboutUs')"  :class="onStutas=='AboutUs'?'onstatus':''">
                     <div class="contents">
                         关于南图
                     </div>
                 </li>
-                <li @click="links('')"  :class="onStutas==''?'onstatus':''">
+                <li @click="links('/numberziyuan')"  :class="onStutas=='Numberziyuan'?'onstatus':''">
                     <div class="contents">
                         数字资源
                     </div>
@@ -45,14 +45,14 @@
                         文化地图
                     </div>
                 </li>
-                <li @click="links('')" :class="onStutas==''?'onstatus':''">
+                <li @click="links('/serverData')" :class="onStutas=='ServerData'?'onstatus':''">
                     <div class="contents">
                         服务数据
                     </div>
                 </li>
             </ul>
             <div class="contents readerCenter">
-                <span>读者中心</span>
+                <span @click="login">读者中心</span>
             </div>
         </div>
     </div>
@@ -63,54 +63,22 @@
         data() {
             return {
                 onStutas:'Index',
-                lists:[
-                    {
-                        text:'首页',
-                        path:'/',
-                        name:'Index'
-                    },{
-                        text:'本馆资讯',
-                        path:'/aboutMessage',
-                        name:'AboutMessage'
-                    },{
-                        text:'服务指南',
-                        path:'/serverTips',
-                        name:'ServerTips'
-                    },{
-                        text:'活动报名',
-                        path:'/',
-                        name:'ServerTips'
-                    },{
-                        text:'新书推荐',
-                        path:'/',
-                        name:'ServerTips'
-                    },{
-                        text:'关于南图',
-                        path:'/',
-                        name:'ServerTips'
-                    },{
-                        text:'数字资源',
-                        path:'/',
-                        name:'ServerTips'
-                    },{
-                        text:'文化地图',
-                        path:'/',
-                        name:'ServerTips'
-                    },{
-                        text:'服务数据',
-                        path:'/',
-                        name:'ServerTips'
-                    }
-                ],
                 indexlogo:require('../../assets/images/indexlogo.png'),
+                showTop:true,//是否显示nav的导航
             }
         },
         mounted(){
             this.onStutas = this.$route.name;
+            if(this.$route.name=='Login'){
+                this.showTop = false;
+            }else{
+                this.showTop = true;
+            }
         },
         watch:{
             $route(to,from){
-                this.onStutas = to.name
+                this.showTop = true;
+                this.onStutas = to.name;
             }
         },
         methods:{
@@ -118,6 +86,10 @@
                 this.$router.push({
                     path:path,
                 })
+            },
+            login(){
+                let routeData = this.$router.resolve({ path: '/login'});
+                window.open(routeData.href, '_blank');
             }
         }
     }
